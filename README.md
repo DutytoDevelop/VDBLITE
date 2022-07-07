@@ -11,8 +11,13 @@ Vector Database Lite (like SQLITE but for vector search)
 
 ```python
 import vdblite
+import pickle
+import numpy as np
+from time import time
 from uuid import uuid4
+import sys
 from pprint import pprint as pp
+
 
 if __name__ == '__main__':
     vdb = vdblite.Vdb()

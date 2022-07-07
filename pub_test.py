@@ -7,7 +7,6 @@ import sys
 from pprint import pprint as pp
 
 
-
 if __name__ == '__main__':
     vdb = vdblite.Vdb()
     dimension = 12    # dimensions of each vector                         
