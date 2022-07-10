@@ -24,7 +24,7 @@ setup(name='vdblite',
       packages=['vdblite'],
       install_requires=["numpy"],
       extras_require={
-        "cpu" = ['faiss-cpu'],
-        "gpu" = ['faiss-gpu'],
+        "cpu": ['faiss-cpu'],
+        "gpu": ['faiss-gpu'],
       },
       zip_safe=False)
