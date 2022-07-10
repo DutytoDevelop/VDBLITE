@@ -22,4 +22,9 @@ setup(name='vdblite',
       author_email='noone@gmail.com',
       license='MIT',
       packages=['vdblite'],
+      install_requires=["numpy"],
+      extras_require={
+        "cpu" = ['faiss-cpu'],
+        "gpu" = ['faiss-gpu'],
+      },
       zip_safe=False)
