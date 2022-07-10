@@ -1,6 +1,7 @@
 import pickle
 import numpy as np
 from time import time
+import faiss
 #from uuid import uuid4
 import sys
 #from pprint import pprint as pp
@@ -9,6 +10,7 @@ import sys
 class Vdb():
     def __init__(self):
         self.data = list()
+        self.index = None
     
     def add(self, payload):  # payload is a DICT
         self.data.append(payload)  # uuid could be in payload :) 
@@ -22,8 +24,24 @@ class Vdb():
                         return
             except:
                 continue
+                
+    def initialize_index(self,field='vector'):
+        vectors = [i['vector'] for i in self.data]
+        if len(vectors) != 0:
+            self.index = faiss.IndexFlatL2(len(vectors))
     
     def search(self, vector, field='vector', count=5):
+        
+        print(self.index.is_trained)   # False
+        self.index.train()  # train on the database vectors
+        print(self.index.ntotal)   # 0
+        self.index.add()   # add the vectors and update the index
+        print(index.is_trained)  # True
+        print(index.ntotal)   # 200
+        
+        vectors = [i['vector'] for i in self.data]
+        self.index = faiss.IndexFlatL2(vectors)
+        
         results = list()
         for i in self.data:
             try:
